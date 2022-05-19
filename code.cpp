@@ -1,4 +1,5 @@
-\#include <bits/stdc++.h>
+
+#include <bits/stdc++.h>
 using namespace std;
 #define UNASSIGNED 0
 #define N 9
@@ -17,10 +18,10 @@ bool SolveSudoku(int grid[N][N])
 
 	for (int num = 1; num <= 9; num++)
 	{
-		
+
 		if (isSafe(grid, row, col, num))
 		{
-			
+
 			grid[row][col] = num;
 
 			if (SolveSudoku(grid))
@@ -29,7 +30,7 @@ bool SolveSudoku(int grid[N][N])
 			grid[row][col] = UNASSIGNED;
 		}
 	}
-	
+
 	// This triggers backtracking
 	return false;
 }
@@ -74,9 +75,7 @@ bool UsedInBox(int grid[N][N], int boxStartRow,
 bool isSafe(int grid[N][N], int row,
 			int col, int num)
 {
-	current row, current column
-	and current 3x3 box */
-	return !UsedInRow(grid, row, num)
+	   return !UsedInRow(grid, row, num)
 		&& !UsedInCol(grid, col, num)
 		&& !UsedInBox(grid, row - row % 3,
 						col - col % 3, num)
@@ -95,7 +94,6 @@ void printGrid(int grid[N][N])
 
 int main()
 {
-	// 0 means unassigned cells
 	int grid[N][N] = { { 3, 0, 6, 5, 0, 8, 4, 0, 0 },
 					{ 5, 2, 0, 0, 0, 0, 0, 0, 0 },
 					{ 0, 8, 7, 0, 0, 0, 0, 3, 1 },
@@ -112,4 +110,3 @@ int main()
 
 	return 0;
 }
-
